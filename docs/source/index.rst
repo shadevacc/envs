@@ -17,6 +17,7 @@ Contents
 --------
 
 .. toctree::
+   win_eleven/shell_prompt
 
    usage
    api
