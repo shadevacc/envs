@@ -1,5 +1,5 @@
-SHELL PROMPT:
-=============
+SHELL PROMPT
+============
 
 Easiest way of configuring bash shell prompt on windows git bash:
 
