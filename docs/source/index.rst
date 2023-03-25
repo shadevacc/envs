@@ -18,6 +18,9 @@ Contents
 
 .. toctree::
    win_eleven/shell_prompt
+   win_eleven/fzf
+   win_eleven/ctags
+
 
    usage
    api
