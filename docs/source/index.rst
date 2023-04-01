@@ -17,6 +17,7 @@ Contents
 --------
 
 .. toctree::
+   linux/linux
    win_eleven/shell_prompt
    win_eleven/fzf
    win_eleven/ctags
