@@ -1,8 +1,9 @@
-FZF
-===
+WINDOWS
+=======
 
-WINDOWS:
---------
+FZF
+---
+
 Pre-built binaries for Windows can be downloaded from below link
 
 main link: https://github.com/junegunn/fzf#windows
