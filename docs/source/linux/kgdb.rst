@@ -1,6 +1,32 @@
 KGDB
 ====
 
+SETUP
+-----
+1. Install pre-requisites and dependencies
+
+.. code:: bash
+
+    ➜ apt install exuberent-ctags cscope tree -y
+    ➜ apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils bc dwarves 
+    ➜ 
+    ➜ 
+    ➜ 
+    ➜ 
+    ➜ 
+    ➜ 
+    ➜ 
+    ➜ 
+    ➜ 
+
+1. Download respective kernel from www.kernel.org
+
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.176.tar.xz
+
+3. Incase you are using UBUNTU 22.04.1 os
+
+# extract it in /usr/src
+
 PROBLEMS & SOLUTIONS
 --------------------
 
