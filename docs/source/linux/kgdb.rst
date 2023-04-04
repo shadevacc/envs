@@ -27,6 +27,27 @@ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.176.tar.xz
 
 # extract it in /usr/src
 
+4. KGDB setup on target vm. bring up vm using virt-install.
+Next edit the vm domains configuration to get target vm ready.
+.. code:: bash
+
+	➜ virsh edit domain_name
+	# Below line is 1st line and it should look similar in the domain config u r using.
+	<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+	  <qemu:commandline>
+	    <qemu:arg value='-gdb'/>
+	    <qemu:arg value='tcp::1200'/>
+	  </qemu:commandline>
+	</domain>
+	
+	➜ # once you start above domain target will be listening to port 1200
+	➜ netstat -tapn | grep 1200
+	
+	➜ # Now this target will be listening on "localhost:1200", on development machine
+	➜ # use gdb client and connect to this target. Ex:
+	➜ gdb vmlinux
+	➜ (gdb) target remote localhost:1200
+	➜ gdb vmlinux
 PROBLEMS & SOLUTIONS
 --------------------
 
