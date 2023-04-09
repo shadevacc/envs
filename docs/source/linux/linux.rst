@@ -85,6 +85,31 @@ Now we can install lolcat tool.
     # Now i will install lolcat
     ➜ python3 -m pip install lolcat
 
+Powerline symbols showing dashes?
+---------------------------------
+
+Follow below steps in Ubuntu22.04.02 and refer `powerline.readthedocs`_:
+
+
+.. _powerline.readthedocs: https://powerline.readthedocs.io/en/master/installation/linux.html
+.. code:: bash
+
+    ➜ # https://powerline.readthedocs.io/en/master/installation/linux.html
+    ➜ python3 -m pip install powerline-status
+    ➜ # Do not use apt pkg manager just do it manually
+    ➜ cd ~/Downloads
+    ➜ git clone https://github.com/powerline/powerline.git
+    ➜ git clone https://github.com/powerline/fonts.git
+    ➜ cd fonts && bash install.sh && cd ..
+    ➜ sudo apt install powerline
+    ➜ mkdir -p ~/.local/share/fonts
+    ➜ mkdir -p ~/.config/fontconfig/conf.d/
+    ➜ cp -rf powerline/font/PowerlineSymbols.otf ~/.local/share/fonts
+    ➜ cp -rf powerline/font/10-powerline-symbols.conf ~/.config/fontconfig/conf.d
+    ➜ fc-cache -vf ~/.local/share/fonts/
+    ➜ # Install the fontconfig file. For newer versions of fontconfig the config
+    ➜ # path is ~/.config/fontconfig/conf.d/, for older versions it’s ~/.fonts.conf.d/:
+
 Install gnome-tweaks & gnome-shell-extension-manager
 ----------------------------------------------------    
 
