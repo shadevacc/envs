@@ -110,6 +110,19 @@ Follow below steps in Ubuntu22.04.02 and refer `powerline.readthedocs`_:
     ➜ # Install the fontconfig file. For newer versions of fontconfig the config
     ➜ # path is ~/.config/fontconfig/conf.d/, for older versions it’s ~/.fonts.conf.d/:
 
+Caps Lock key to behave as the Control key in Ubuntu 22.04:
+-----------------------------------------------------------
+
+1. Open the ``Tweaks``
+
+2. Open ``Keyboard and mouse``
+
+3. Open ``Additional layout options``
+
+4. Open the ``Caps Lock behaviour``
+
+5. Open the ``Make Caps Lock and additional ctrl``
+
 Install gnome-tweaks & gnome-shell-extension-manager
 ----------------------------------------------------    
 
