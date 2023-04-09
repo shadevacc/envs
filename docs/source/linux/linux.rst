@@ -84,3 +84,36 @@ Now we can install lolcat tool.
 
     # Now i will install lolcat
     ➜ python3 -m pip install lolcat
+
+Install gnome-tweaks & gnome-shell-extension-manager
+----------------------------------------------------    
+
+1. ``gnome-tweaks``
+
+`Install and change themes in Ubuntu22.04.02`_.
+
+.. _Install and change themes in Ubuntu22.04.02: https://ubuntuhandbook.org/index.php/2022/05/install-themes-ubuntu-22-04/#:~:text=Enable%20Shell%20theme%20selection%20box%3A&text=To%20enable%20it%2C%20you%20have,install%20%E2%80%9CUser%20Themes%E2%80%9D%20extension.&text=Next%2C%20click%20on%20the%20%E2%80%9CActivities,%2C%20re%2Dopen%20Gnome%20Tweaks
+
+Gnome themes can be downloaded from this site: `gnome-look.org`_.
+
+.. _gnome-look.org: https://www.gnome-look.org/browse?cat=135&ord=rating
+
+.. code:: bash
+
+    ➜ sudo apt install gnome-tweaks
+    ➜ mkdir -p ~/.themes
+    ➜ # After downloading WhiteSur-Dark-solid.tar.xz from gnome-look.org
+    ➜ tar -xvf WhiteSur-Dark-solid.tar.xz
+    ➜ mv WhiteSur-Dark-solid ~/.themes
+    ➜ fc-cache
+
+Now open application tweaks from GUI and select the installed theme
+
+``Tweask`` -> ``Appearance`` -> ``Themes`` -> ``Applications``
+
+2. ``gnome-shell-extension-manager``
+
+.. code:: bash
+
+    ➜ sudo apt install gnome-shell-extension-manager
+

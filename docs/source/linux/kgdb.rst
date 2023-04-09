@@ -9,15 +9,6 @@ SETUP
 
     ➜ apt install exuberent-ctags cscope tree -y
     ➜ apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils bc dwarves 
-    ➜ 
-    ➜ 
-    ➜ 
-    ➜ 
-    ➜ 
-    ➜ 
-    ➜ 
-    ➜ 
-    ➜ 
 
 1. Download respective kernel from www.kernel.org
 
@@ -32,6 +23,9 @@ Next edit the vm domains configuration to get target vm ready.
 .. code:: bash
 
 	➜ virsh edit domain_name
+
+.. code:: xml
+
 	# Below line is 1st line and it should look similar in the domain config u r using.
 	<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
 	  <qemu:commandline>
@@ -40,14 +34,18 @@ Next edit the vm domains configuration to get target vm ready.
 	  </qemu:commandline>
 	</domain>
 	
+.. code:: bash
+
 	➜ # once you start above domain target will be listening to port 1200
 	➜ netstat -tapn | grep 1200
 	
 	➜ # Now this target will be listening on "localhost:1200", on development machine
 	➜ # use gdb client and connect to this target. Ex:
+
 	➜ gdb vmlinux
 	➜ (gdb) target remote localhost:1200
 	➜ gdb vmlinux
+
 PROBLEMS & SOLUTIONS
 --------------------
 
