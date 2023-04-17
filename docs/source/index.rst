@@ -23,7 +23,7 @@ Contents
    win_eleven/fzf
    win_eleven/ctags
    linux/bash_script
-
+   work/mail
 
    usage
    api
