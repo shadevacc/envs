@@ -1,11 +1,10 @@
+MAIL
+====
+
 WRITE RESIGNATION MAIL TO MANAGER
 =================================
 
 ``Subject: Resignation from [YOUR POSITION]``
-
-+----------------------------------------+
-| Subject: Resignation from your position|
-+========================================+
 
 Dear ``[Manager's Name]``,
 

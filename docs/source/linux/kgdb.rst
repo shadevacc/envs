@@ -1,78 +1,72 @@
-KGDB
-====
+DEBUGGING
+=========
 
-SETUP
------
-1. Install pre-requisites and dependencies
+KGDB SETUP
+----------
+Environment to setup
+~~~~~~~~~~~~~~~~~~~~
+.. _linux-5.10.176.tar.xz: https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.176.tar.xz
+.. _agent-proxy: https://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git/
+.. _Kernel_Debugging_with_GDB_and_KGDB: https://docs.windriver.com/bundle/Wind_River_Linux_Tutorial_Kernel_Debugging_with_GDB_and_KGDB_9_1/page/mxx1551912688078.html
 
-.. code:: bash
+| 1. Install pre-requisites and dependencies
 
-    ➜ apt install exuberent-ctags cscope tree -y
-    ➜ apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils bc dwarves 
+	.. code:: bash
 
-1. Download respective kernel from www.kernel.org
+		➜ apt install exuberent-ctags cscope tree -y
+		➜ apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils bc dwarves 
 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.176.tar.xz
+| 2. Download respective kernel `linux-5.10.176.tar.xz`_ from https://kernel.org
+| 3. Incase you are using UBUNTU 22.04.1 os extract kernel in ``/usr/src``
+| 4. KGDB setup on target vm. bring up vm using virt-install. Next edit the vm domains configuration to get target vm ready.
 
-3. Incase you are using UBUNTU 22.04.1 os
+	.. code:: bash
 
-# extract it in /usr/src
+		➜ virsh edit domain_name
 
-4. KGDB setup on target vm. bring up vm using virt-install.
-Next edit the vm domains configuration to get target vm ready.
-.. code:: bash
+	.. code:: xml
 
-	➜ virsh edit domain_name
-
-.. code:: xml
-
-	# Below line is 1st line and it should look similar in the domain config u r using.
-	<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
-	  <qemu:commandline>
-	    <qemu:arg value='-gdb'/>
-	    <qemu:arg value='tcp::1200'/>
-	  </qemu:commandline>
-	</domain>
+		# Below line is 1st line and it should look similar in the domain config u r using.
+		<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+		<qemu:commandline>
+			<qemu:arg value='-gdb'/>
+			<qemu:arg value='tcp::1200'/>
+		</qemu:commandline>
+		</domain>
 	
-.. code:: bash
+	.. code:: bash
 
-	➜ # once you start above domain target will be listening to port 1200
-	➜ netstat -tapn | grep 1200
-	
-	➜ # Now this target will be listening on "localhost:1200", on development machine
-	➜ # use gdb client and connect to this target. Ex:
+		➜ # once you start above domain target will be listening to port 1200
+		➜ netstat -tapn | grep 1200
+		
+		➜ # Now this target will be listening on "localhost:1200", on development machine
+		➜ # use gdb client and connect to this target. Ex:
 
-	➜ gdb vmlinux
-	➜ (gdb) target remote localhost:1200
-	➜ gdb vmlinux
+		➜ gdb vmlinux
+		➜ (gdb) target remote localhost:1200
+		➜ gdb vmlinux
 
 PROBLEMS & SOLUTIONS
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
-1. Your Kernel boots and `SysRq + g` is not working.
+| 1. Your Kernel boots and `SysRq + g` is not working.
 
-.. code:: bash
+	.. code:: bash
 
-    ➜ # This will enable sending SysRq commands.
-    ➜ # If you get tired of doing this manually,
-    ➜ # consider adding `sysrq_always_enabled` to your kernel command line arguments.
-    ➜ echo 1 > /proc/sys/kernel/sysrq
+		➜ # This will enable sending SysRq commands.
+		➜ # If you get tired of doing this manually,
+		➜ # consider adding `sysrq_always_enabled` to your kernel command line arguments.
+		➜ echo 1 > /proc/sys/kernel/sysrq
 
-2. When stopping execution through SysRq key on "TARGET MACHINE", it stops but then it is not able
-to communicate over serial cable with "DEVELOPMENT MACHINE".
+| 2. When stopping execution through SysRq key on "TARGET MACHINE", it stops but
+| then it is not able to communicate over serial cable with "DEVELOPMENT MACHINE".
+| The reason can be, your KGDB I/O driver is not passed arguments properly and
+| you may need to reconfigure the driver in below way:
 
-The reason can be, your KGDB I/O driver is not passed arguments properly and you may need to
-reconfigure the driver in below way:
+	.. code:: bash
 
-.. code:: bash
+		➜ # The reason can be, your KGDB I/O driver is not passed arguments properly and you may need to
+		➜ # reconfigure the driver in below way:
+		➜ echo "ttyS0,115200" > /sys/modules/<module name>/parameters
 
-    ➜ # The reason can be, your KGDB I/O driver is not passed arguments properly and you may need to
-    ➜ # reconfigure the driver in below way:
-    ➜ echo "ttyS0,115200" > /sys/modules/<module name>/parameters
-
-3. How to use agent-proxy kdmx to debug linux kernel, link = 
-https://docs.windriver.com/bundle/Wind_River_Linux_Tutorial_Kernel_Debugging_with_GDB_and_KGDB_9_1/page/mxx1551912688078.html
-
-Download agent-proxy from below link:
-https://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git/
-
+| 3. Read `Kernel_Debugging_with_GDB_and_KGDB`_ to use `agent-proxy`_ kdmx and debug linux kernel.
