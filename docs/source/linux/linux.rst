@@ -12,13 +12,13 @@ Ubuntu
 
     .. code:: bash
 
-        ➜ cd ~/Download
-        ➜ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FantasqueSansMono.zip
-        ➜ mkdir -p F_NF
-        ➜ unzip FantasqueSansMono.zip -d F_NF
-        ➜ cd F_NF && mkdir -p ~/.fonts
-        ➜ mv *.ttf ~/.fonts
-        ➜ fc-cache
+        cd ~/Download
+        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FantasqueSansMono.zip
+        mkdir -p F_NF
+        unzip FantasqueSansMono.zip -d F_NF
+        cd F_NF && mkdir -p ~/.fonts
+        mv *.ttf ~/.fonts
+        fc-cache
 
     Apply this font to terminal
 
@@ -27,34 +27,34 @@ Ubuntu
 
     .. code:: bash
 
-        ➜ sudo passwd root # Give the password and it will change
-        ➜ su root          # Now you will be able to login as root
+        sudo passwd root # Give the password and it will change
+        su root          # Now you will be able to login as root
                         # Just give the password and enter
-        ➜ apt install vim  # vim is must to do editing of any files
+        apt install vim  # vim is must to do editing of any files
         # Add below content in the file
-        ➜ vim /etc/gdm3/custom.conf
+        vim /etc/gdm3/custom.conf
         # TimedLoginDelay = 10
         AllowRoot = true
         # Below line needs to be commented out so do it
-        ➜ vim /etc/pam.d/gdm-password
+        vim /etc/pam.d/gdm-password
         # auth   required        pam_succeed_if.so user != root quiet_success
         # Enable or Uncomment password authentication
-        ➜ vim /etc/ssh/sshd_config
+        vim /etc/ssh/sshd_config
         # PasswordAuthentication = yes
         PasswordAuthentication yes
         PermitRootLogin yes
-        ➜ reboot
+        reboot
 
 | 3. setup done for user to be done for root
 
     .. code:: bash
 
-        ➜ sudo apt install net-tools -y
-        ➜ sudo apt install openssh-server -y
-        ➜ mkdr -p ~/.fonts && cd ~/.fonts
-        ➜ sftp user@ipaddr -y
-        ➜ get -r *
-        ➜ fc-cache
+        sudo apt install net-tools -y
+        sudo apt install openssh-server -y
+        mkdr -p ~/.fonts && cd ~/.fonts
+        sftp user@ipaddr -y
+        get -r *
+        fc-cache
 
     Apply this font(FantasqueSansMono) to terminal
 
@@ -62,10 +62,10 @@ Ubuntu
 
     .. code:: bash
 
-        ➜ # do not install vbox guest addtions without installing build-essential
-        ➜ # you will see half display
-        ➜ # link: https://askubuntu.com/questions/1408406/how-to-fix-partial-black-screen-on-virtual-box-ubuntu-linux
-        ➜ sudo apt install make gcc flex bison build-essential
+        # do not install vbox guest addtions without installing build-essential
+        # you will see half display
+        # link: https://askubuntu.com/questions/1408406/how-to-fix-partial-black-screen-on-virtual-box-ubuntu-linux
+        sudo apt install make gcc flex bison build-essential
 
 lolcat
 ~~~~~~
@@ -77,14 +77,14 @@ Now we can install lolcat tool.
     .. code:: bash
 
         # Check for python3
-        ➜ which python3
+        which python3
         /usr/bin/python3
 
         # Python3 exists. so i will upgrade pip
-        ➜ python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade pip
 
         # Now i will install lolcat
-        ➜ python3 -m pip install lolcat
+        python3 -m pip install lolcat
 
 Powerline symbols showing dashes?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,21 +94,21 @@ Follow below steps in Ubuntu22.04.02 and refer `powerline.readthedocs`_:
 
     .. code:: bash
 
-        ➜ # https://powerline.readthedocs.io/en/master/installation/linux.html
-        ➜ python3 -m pip install powerline-status
-        ➜ # Do not use apt pkg manager just do it manually
-        ➜ cd ~/Downloads
-        ➜ git clone https://github.com/powerline/powerline.git
-        ➜ git clone https://github.com/powerline/fonts.git
-        ➜ cd fonts && bash install.sh && cd ..
-        ➜ sudo apt install powerline
-        ➜ mkdir -p ~/.local/share/fonts
-        ➜ mkdir -p ~/.config/fontconfig/conf.d/
-        ➜ cp -rf powerline/font/PowerlineSymbols.otf ~/.local/share/fonts
-        ➜ cp -rf powerline/font/10-powerline-symbols.conf ~/.config/fontconfig/conf.d
-        ➜ fc-cache -vf ~/.local/share/fonts/
-        ➜ # Install the fontconfig file. For newer versions of fontconfig the config
-        ➜ # path is ~/.config/fontconfig/conf.d/, for older versions it’s ~/.fonts.conf.d/:
+        # https://powerline.readthedocs.io/en/master/installation/linux.html
+        python3 -m pip install powerline-status
+        # Do not use apt pkg manager just do it manually
+        cd ~/Downloads
+        git clone https://github.com/powerline/powerline.git
+        git clone https://github.com/powerline/fonts.git
+        cd fonts && bash install.sh && cd ..
+        sudo apt install powerline
+        mkdir -p ~/.local/share/fonts
+        mkdir -p ~/.config/fontconfig/conf.d/
+        cp -rf powerline/font/PowerlineSymbols.otf ~/.local/share/fonts
+        cp -rf powerline/font/10-powerline-symbols.conf ~/.config/fontconfig/conf.d
+        fc-cache -vf ~/.local/share/fonts/
+        # Install the fontconfig file. For newer versions of fontconfig the config
+        # path is ~/.config/fontconfig/conf.d/, for older versions it’s ~/.fonts.conf.d/:
 
 CapsLock key to behave as Control key in Ubuntu 22.04
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -135,12 +135,12 @@ Install gnome-tweaks & gnome-shell-extension-manager
 
         .. code:: bash
 
-            ➜ sudo apt install gnome-tweaks
-            ➜ mkdir -p ~/.themes
-            ➜ # After downloading WhiteSur-Dark-solid.tar.xz from gnome-look.org
-            ➜ tar -xvf WhiteSur-Dark-solid.tar.xz
-            ➜ mv WhiteSur-Dark-solid ~/.themes
-            ➜ fc-cache
+            sudo apt install gnome-tweaks
+            mkdir -p ~/.themes
+            # After downloading WhiteSur-Dark-solid.tar.xz from gnome-look.org
+            tar -xvf WhiteSur-Dark-solid.tar.xz
+            mv WhiteSur-Dark-solid ~/.themes
+            fc-cache
 
     | Now open application tweaks from GUI and select the installed theme
 
@@ -150,5 +150,5 @@ Install gnome-tweaks & gnome-shell-extension-manager
 
     .. code:: bash
 
-        ➜ sudo apt install gnome-shell-extension-manager
+        sudo apt install gnome-shell-extension-manager
 

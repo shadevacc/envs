@@ -8,8 +8,8 @@ Easiest way of configuring bash shell prompt on windows git bash:
 2. Just add below content in .bashrc:
    .. code::
 
-        ➜ cat ~/.bashrc
-        PS1="➜ "
+        cat ~/.bashrc
+        PS1=""
 
 3. You can get the symbol from below link:
    https://coolsymbol.com/

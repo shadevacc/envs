@@ -13,8 +13,8 @@ Environment to setup
 
 	.. code:: bash
 
-		➜ apt install exuberent-ctags cscope tree -y
-		➜ apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils bc dwarves 
+		apt install exuberent-ctags cscope tree -y
+		apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils bc dwarves 
 
 | 2. Download respective kernel `linux-5.10.176.tar.xz`_ from https://kernel.org
 | 3. Incase you are using UBUNTU 22.04.1 os extract kernel in ``/usr/src``
@@ -22,7 +22,7 @@ Environment to setup
 
 	.. code:: bash
 
-		➜ virsh edit domain_name
+		virsh edit domain_name
 
 	.. code:: xml
 
@@ -36,15 +36,15 @@ Environment to setup
 	
 	.. code:: bash
 
-		➜ # once you start above domain target will be listening to port 1200
-		➜ netstat -tapn | grep 1200
+		# once you start above domain target will be listening to port 1200
+		netstat -tapn | grep 1200
 		
-		➜ # Now this target will be listening on "localhost:1200", on development machine
-		➜ # use gdb client and connect to this target. Ex:
+		# Now this target will be listening on "localhost:1200", on development machine
+		# use gdb client and connect to this target. Ex:
 
-		➜ gdb vmlinux
-		➜ (gdb) target remote localhost:1200
-		➜ gdb vmlinux
+		gdb vmlinux
+		(gdb) target remote localhost:1200
+		gdb vmlinux
 
 PROBLEMS & SOLUTIONS
 ~~~~~~~~~~~~~~~~~~~~
@@ -53,10 +53,10 @@ PROBLEMS & SOLUTIONS
 
 	.. code:: bash
 
-		➜ # This will enable sending SysRq commands.
-		➜ # If you get tired of doing this manually,
-		➜ # consider adding `sysrq_always_enabled` to your kernel command line arguments.
-		➜ echo 1 > /proc/sys/kernel/sysrq
+		# This will enable sending SysRq commands.
+		# If you get tired of doing this manually,
+		# consider adding `sysrq_always_enabled` to your kernel command line arguments.
+		echo 1 > /proc/sys/kernel/sysrq
 
 | 2. When stopping execution through SysRq key on "TARGET MACHINE", it stops but
 | then it is not able to communicate over serial cable with "DEVELOPMENT MACHINE".
@@ -65,8 +65,8 @@ PROBLEMS & SOLUTIONS
 
 	.. code:: bash
 
-		➜ # The reason can be, your KGDB I/O driver is not passed arguments properly and you may need to
-		➜ # reconfigure the driver in below way:
-		➜ echo "ttyS0,115200" > /sys/modules/<module name>/parameters
+		# The reason can be, your KGDB I/O driver is not passed arguments properly and you may need to
+		# reconfigure the driver in below way:
+		echo "ttyS0,115200" > /sys/modules/<module name>/parameters
 
 | 3. Read `Kernel_Debugging_with_GDB_and_KGDB`_ to use `agent-proxy`_ kdmx and debug linux kernel.

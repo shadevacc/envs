@@ -38,7 +38,7 @@ OUTPUT A
 	
 	.. code:: bash
 
-		➜ ./emsg
+		./emsg
 		----------
 		----------
 
@@ -46,7 +46,7 @@ OUTPUT B
 --------
 	.. code:: bash
 
-		➜ ./emsg "HELLO"
+		./emsg "HELLO"
 		---------
 		# HELLO #
 		---------
